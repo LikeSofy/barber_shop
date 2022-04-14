@@ -1,0 +1,38 @@
+{% extends 'mainapp/base.html' %}
+
+{% load static %}
+
+{% block title %}Мастера{% endblock %}
+
+{% block content %}
+<main class="page-main">
+    <div class="container">
+
+        <h1 class="inner-title">Мастера</h1>
+
+
+        <div class="shop-content-wrapper">
+
+
+            <section class="goods-list">
+
+                <h2 class="visually-hidden">Список товаров:</h2>
+                {% for master in masters %}
+                <article class="goods-item">
+                    <a class="goods-item-header" href="shop-item.html" title="Перейти на страницу товара">
+                        <h3 class="goods-item-title">{{ master.name }}</h3>
+                        <img src="{{ master.photo.url }}" width="220" height="265"
+                             alt="{{ master.name }}" style="object-fit: cover;">
+                    </a>
+                    <div class="goods-item-price">
+                        <a class="shop-btn  btn" href="{% url 'master' master.pk %}">Подробнее</a>
+                    </div>
+                </article>
+                {% endfor %}
+            </section>
+
+        </div>
+
+    </div>
+</main>
+{% endblock %}

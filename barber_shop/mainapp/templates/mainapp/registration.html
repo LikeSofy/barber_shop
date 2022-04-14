@@ -1,0 +1,26 @@
+{% extends 'mainapp/base.html' %}
+
+{% load static %}
+
+{% block title %}Регистрация{% endblock %}
+
+{% block content %}
+<main class="page-main">
+    <div class="login-content">
+        <h1 class="inner-title">Регистрация</h1>
+        <form class="login-form" action="{% url 'register' %}" method="post">
+            {% csrf_token %}
+            {% for field in form %}
+            <div class="form-field-group">
+                {{ field }}
+                <label for="{{ form.login.id_for_label }}" class="form-field-label">{{ field.label }}</label>
+                <div class="form-field-error">{{ field.errors }}</div>
+            </div>
+            {% endfor %}
+
+            <button class="btn" type="submit">Зарегистрироваться</button>
+        </form>
+        <p>Уже зарегистрированы? <a class="sign-up-link" href="{% url 'login' %}">Войти!</a></p>
+    </div>
+</main>
+{% endblock %}

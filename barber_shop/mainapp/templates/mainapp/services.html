@@ -1,0 +1,39 @@
+{% extends 'mainapp/base.html' %}
+
+{% load static %}
+
+{% block title %}Услуги{% endblock %}
+
+{% block content %}
+<main class="page-main">
+    <div class="container">
+
+        <h1 class="inner-title">Услуги</h1>
+
+
+        <div class="shop-content-wrapper">
+
+
+            <section class="goods-list">
+
+                <h2 class="visually-hidden">Список товаров:</h2>
+                {% for service in services %}
+                <article class="goods-item">
+                    <a class="goods-item-header">
+                        <h3 class="goods-item-title">{{ service.name }}</h3>
+                        <img src="{{ service.photo.url }}" width="220" height="265"
+                             alt="{{ service.name }}" style="object-fit: cover;">
+                    </a>
+                    <div class="goods-item-price">
+                        <span class="price-value">{{ service.price }} РУБ</span>
+                        <a class="shop-btn  btn" href="#">Записаться</a>
+                    </div>
+                </article>
+                {% endfor %}
+            </section>
+
+        </div>
+
+    </div>
+</main>
+{% endblock %}

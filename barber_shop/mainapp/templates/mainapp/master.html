@@ -1,0 +1,30 @@
+{% extends 'mainapp/base.html' %}
+
+{% load static %}
+
+{% block title %}Мастера{% endblock %}
+
+{% block content %}
+<main class="page-main">
+    <div class="container">
+
+        <h1 class="inner-title">{{ master.name }}</h1>
+
+        <div class="shop-content-wrapper">
+
+            <section class="goods-item-gallery">
+                <img class="primary-photo" src="{{ master.photo.url }}" width="460" height="499"
+                     alt="{{ master.name }}" style="object-fit: cover;">
+            </section>
+
+            <section class="goods-item-description">
+                <p>
+                    {{ master.description }}
+                </p>
+            </section>
+
+        </div>
+
+    </div>
+</main>
+{% endblock %}

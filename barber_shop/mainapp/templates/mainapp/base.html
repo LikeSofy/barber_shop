@@ -1,0 +1,75 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="utf-8">
+    <title>{% block title %}{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'mainapp/css/styles.css' %}">
+    <link rel="shortcut icon" href="{% static 'mainapp/img/favicon.ico' %}" type="image/vnd.microsoft.icon">
+    <link rel="icon" type="image/png" href="{% static 'mainapp/img/favicon-96x96.png' %}" sizes="96x96">
+    <link rel="icon" type="image/png" href="{% static 'mainapp/img/favicon-64x64.png' %}" sizes="64x64">
+    <link rel="icon" type="image/png" href="{% static 'mainapp/img/favicon-32x32.png' %}" sizes="32x32">
+    <link rel="icon" type="image/png" href="{% static 'mainapp/img/favicon-16x16.png' %}" sizes="16x16">
+</head>
+
+<body>
+
+<header class="page-header">
+    <nav class="nav-bar  container">
+
+        <ul class="main-nav">
+            <li class="main-nav-item">
+                <a class="nav-item-link  current-page" href="{% url 'index' %}">Главная</a>
+            </li>
+            <li class="main-nav-item">
+                <a class="nav-item-link" href="{% url 'services' %}">Услуги</a>
+            </li>
+            <li class="main-nav-item">
+                <a class="nav-item-link" href="{% url 'masters' %}">Мастера</a>
+            </li>
+            {% if user.is_authenticated %}
+            <li class="main-nav-item">
+                <a class="nav-item-link" href="#">Мои записи</a>
+            </li>
+            {% endif %}
+        </ul>
+
+        <ul class="user-menu">
+            <li class="user-menu-item">
+                {% if user.is_authenticated %}
+                <a class="login-btn  user-menu-link" href="{% url 'logout' %}">Выход</a>
+                {% else %}
+                <a class="login-btn  user-menu-link" href="{% url 'login' %}">Вход</a>
+                {% endif %}
+            </li>
+        </ul>
+
+    </nav>
+</header>
+
+{% block content %}{% endblock %}
+
+<footer class="page-footer">
+    <div class="footer-container  container">
+
+        <p class="footer-contacts">
+            Барбершоп
+        </p>
+
+        <div class="footer-social">
+            <p>Мы в социальных сетях:</p>
+            <a class="social-btn  social-btn-vk" href="#" target="_blank">Вконтакте</a>
+            <a class="social-btn  social-btn-fb" href="#" target="_blank">Фейсбук</a>
+            <a class="social-btn  social-btn-inst" href="#" target="_blank">Инстаграм</a>
+        </div>
+
+    </div>
+</footer>
+
+<script type="text/javascript" src="js/scripts.js"></script>
+
+</body>
+
+</html>

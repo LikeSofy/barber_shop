@@ -1,0 +1,28 @@
+{% extends 'mainapp/base.html' %}
+
+{% load static %}
+
+{% block title %}Вход{% endblock %}
+
+{% block content %}
+<main class="page-main">
+    <div class="login-content">
+        <h1 class="inner-title">Личный кабинет</h1>
+        <p>Введите логин и пароль</p>
+        <div class="form-field-error">{{ form.non_field_errors }}</div>
+        <form class="login-form" action="{% url 'login' %}" method="post">
+            {% csrf_token %}
+            {% for field in form %}
+            <div class="form-field-group">
+                {{ field }}
+                <label for="{{ form.login.id_for_label }}" class="form-field-label">{{ field.label }}</label>
+                <div class="form-field-error">{{ field.errors }}</div>
+            </div>
+            {% endfor %}
+
+            <button class="btn" type="submit">Войти</button>
+        </form>
+        <p>Впервые на нашем сайте? <a class="sign-up-link" href="{% url 'register' %}">Зарегистрируйтесь!</a></p>
+    </div>
+</main>
+{% endblock %}
